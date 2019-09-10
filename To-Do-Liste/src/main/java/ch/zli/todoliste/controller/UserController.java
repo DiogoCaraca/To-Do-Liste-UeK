@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 
+//da sind user Funktionen
 @RestController
 @RequestMapping("api/user")
 public class UserController {
@@ -17,15 +18,17 @@ public class UserController {
         this.userService = userService;
     }
 
+    //erstellt einen user - registrieren
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@Valid @RequestBody User user){
         return userService.createUser(user);
     }
 
+    //holt einen user - authentication versuch
     @PostMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String authenticationLogin(@PathVariable Long id) {
-        return "userService.authenticationLogin(id);";
+    public Optional<User> authenticationLogin(@PathVariable Long id) {
+        return userService.authenticationLogin(id);
     }
 }
