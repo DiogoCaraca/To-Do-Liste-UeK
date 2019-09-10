@@ -25,7 +25,7 @@ public class UserController {
 
     @PostMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<User> authenticationLogin(@PathVariable Long id) {
-        return userService.authenticationLogin(id);
+    public String authenticationLogin(@PathVariable Long id) {
+        return "userService.authenticationLogin(id);";
     }
 }
